@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import './App.css'
 import { supabase } from './shared/API/supabase'
-import{useEffect} from 'react';
 import {useSession} from '@/shared/API/useSession';
 import{AuthForm} from '@/features/authentification/AuthForm';
 

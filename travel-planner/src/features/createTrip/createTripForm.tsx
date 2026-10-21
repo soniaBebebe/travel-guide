@@ -1,5 +1,5 @@
 import {useState } from 'react';
-import {useCreateTrip} from '@/travel-planner/src/entities/trip/queries';
+import {useCreateTrip} from '@/trip/queries';
 import {dateRange} from '@/shared/lib/dateRange';
 
 export const useCreateTripForm = () =>{
@@ -23,6 +23,7 @@ export const useCreateTripForm = () =>{
                     baseCurrency:'KZT',
                     coverUrl:null,
                 },
+                {
                 onSuccess:()=>{
                     setTitle('');
                     setDestination('');
@@ -30,7 +31,7 @@ export const useCreateTripForm = () =>{
                     setEnd('');
                 },
                 onError:(e)=>setError(e.message),
-            }
+            },
             )
         }
     }

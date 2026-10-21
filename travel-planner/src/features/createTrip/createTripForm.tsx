@@ -1,5 +1,5 @@
 import {useState } from 'react';
-// import {useCreateTrip} from '@/entities/trip/queries';
+import {useCreateTrip} from '@/travel-planner/src/entities/trip/queries';
 import {dateRange} from '@/shared/lib/dateRange';
 
 export const useCreateTripForm = () =>{

@@ -1,8 +1,8 @@
 import {useState } from 'react';
-import {useCreateTrip} from '@/trip/queries';
+import {useCreateTrip} from '@/entities/trip/queries';
 import {dateRange} from '@/shared/lib/dateRange';
 
-export const useCreateTripForm = () =>{
+export const createTripForm = () =>{
     const [title, setTitle] = useState('');
     const [destination, setDestination] = useState('');
     const [start, setStart] = useState('');
@@ -30,9 +30,41 @@ export const useCreateTripForm = () =>{
                     setStart('');
                     setEnd('');
                 },
-                onError:(e)=>setError(e.message),
+                onError: (e)=>setError(e.message),
             },
             )
         }
+        catch(e){
+            setError(e instanceof Error ? e.message:'Oшибка');
+        }
     }
+    const valid = title.trim() !== '' && start !=='' && end !=='';
+
+    return(
+        <div className="card">
+            <div className="field">
+                <label htmlFor="title">Название</label>
+                <input id="title" value={title} onChange={(e)=>setTitle(e.target.value)} />
+            </div>
+            <div className="field">
+                <label htmlFor="dest">Направление</label>
+                <input id="dest" value={destination} onChange={(e)=>setDestination(e.target.value)} />
+            </div>
+            <div className="row">
+                <div className="field">
+                    <label htmlFor="start">Начало</label>
+                    <input id="start" type="date" value={start} onChange={(e)=>setStart(e.target.value)} />
+                </div>
+                <div className="field">
+                    <label htmlFor="end">Конец</label>
+                    <input id="end" type="date" value={end} onChange={(e)=>setEnd(e.target.value)} />
+                </div>
+            </div>
+            {error && <p className="error">{error}</p>}
+
+            <button className='btn' onClick={submit} disabled={!valid||createTrip.isPending}>
+                {createTrip.isPending ? 'Сохраняю...' : 'Создать поездку'}
+            </button>
+        </div>
+    )
 }

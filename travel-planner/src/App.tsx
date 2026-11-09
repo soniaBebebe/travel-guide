@@ -2,6 +2,7 @@ import './App.css'
 import { supabase } from './shared/API/supabase'
 import {useSession} from '@/shared/API/useSession';
 import{AuthForm} from '@/features/authentification/AuthForm';
+import { DashboardPage } from './pages/dashboardPage';
 
 export default function App() {
 const {session, loading} = useSession();
@@ -21,7 +22,8 @@ return(
       <h1>Travel Planner</h1>
       <button className='link' onClick={()=> supabase.auth.signOut()}>Выйти</button>
     </div>
-    <p className='meta'>Вы вошли как {session.user.email}</p>
+    {/* <p className='meta'>Вы вошли как {session.user.email}</p> */}
+    <DashboardPage/>
   </div>
 );
 }

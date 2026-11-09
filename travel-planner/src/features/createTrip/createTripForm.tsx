@@ -2,7 +2,7 @@ import {useState } from 'react';
 import {useCreateTrip} from '@/entitites/trip/queries';
 import {dateRange} from '@/shared/lib/dateRange';
 
-export const createTripForm = () =>{
+export const CreateTripForm = () =>{
     const [title, setTitle] = useState('');
     const [destination, setDestination] = useState('');
     const [start, setStart] = useState('');

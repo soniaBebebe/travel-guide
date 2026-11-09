@@ -28,7 +28,7 @@ const toRow=(t:Partial<TripDraft>)=>{
     if(t.title !== undefined) row.title=t.title;
     if(t.destination !== undefined) row.destination=t.destination;
     if(t.baseCurrency !== undefined) row.base_currency=t.baseCurrency;
-    if(t.coverUrl !== undefined) row.coer_url=t.coverUrl;
+    if(t.coverUrl !== undefined) row.cover_url=t.coverUrl;
     if(t.dates !== undefined) {
         row.start_date=t.dates.start.toISOString().slice(0,10);
         row.end_date=t.dates.end.toISOString().slice(0,10);

@@ -7,10 +7,16 @@ export const tripKeys={
     detail:(id:string)=>['trips', id] as const,
 };
 
-export const useTrips=(id:string)=>
+export const useTrips=()=>
     useQuery({
         queryKey: tripKeys.all,
         queryFn:()=> tripRepository.findAll(),
+    });
+
+export const useTrip=(id:string)=>
+    useQuery({
+        queryKey: tripKeys.detail(id),
+        queryFn:()=> tripRepository.findById(id),
     });
 
 export const useCreateTrip=()=>{

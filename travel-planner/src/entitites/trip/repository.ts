@@ -54,6 +54,15 @@ export const tripRepository={
         if(error) throw new Error(error.message);
         return data ? toDomain(data): null;
     },
+    async findById(id:string):Promise<Trip|null>{
+        const {data, error}=await supabase
+        .from('trips')
+        .select('*')
+        .eq('id', id)
+        .maybeSingle();
+        if(error) throw new Error(error.message);
+        return data ? toDomain(data): null;
+    },
     async create(draft:TripDraft):Promise<Trip>{
         const{data:auth}=await supabase.auth.getUser();
         if(!auth.user) throw new Error('Требуется вход');

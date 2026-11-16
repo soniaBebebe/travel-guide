@@ -1,4 +1,4 @@
-import {CreateTripForm} from '@/features/createTrip/createTripForm';
+import {CreateTripForm} from '@/features/createTrip/CreateTripForm';
 import {useTrips, useDeleteTrip} from '@/entitites/trip/queries';
 import {durationDays,isActive,isUpcoming} from '@/entitites/trip/model';
 
@@ -11,7 +11,7 @@ export const DashboardPage=()=>{
         {isLoading && <p className="meta">Загрузка...</p>}
         {error && <p className="error">{(error as Error).message}</p>}
         {trips?.length === 0 && <p className='meta'> Пока пусто - создайте первую поездку.</p>}
-        {trips?.map((trip)=>{
+        {trips?.map((trip)=>(
             <div key={trip.id} className="card">
                 <div className="topbar">
                     <h3>{trip.title}</h3>
@@ -27,7 +27,7 @@ export const DashboardPage=()=>{
                     {isUpcoming(trip) && 'впереди'}
                 </p>
             </div>
-        })}
+        ))}
         </>
     )
 }

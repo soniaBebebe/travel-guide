@@ -3,6 +3,7 @@ import { supabase } from './shared/API/supabase'
 import {useSession} from '@/shared/API/useSession';
 import{AuthForm} from '@/features/authentification/AuthForm';
 import { DashboardPage } from './pages/dashboardPage';
+import { Router } from '@/app/router';
 
 export default function App() {
 const {session, loading} = useSession();
@@ -23,7 +24,7 @@ return(
       <button className='link' onClick={()=> supabase.auth.signOut()}>Выйти</button>
     </div>
     {/* <p className='meta'>Вы вошли как {session.user.email}</p> */}
-    <DashboardPage/>
+    <Router/>
   </div>
 );
 }

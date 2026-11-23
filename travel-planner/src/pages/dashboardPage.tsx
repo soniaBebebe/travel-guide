@@ -27,7 +27,7 @@ export const DashboardPage=()=>{
                 <p className="meta">
                     {trip.destination ?? 'без направления'} . {durationDays(trip)} дн.
                     {isActive(trip) && ' идет сейчас'}
-                    {isUpcoming(trip) && 'впереди'}
+                    {isUpcoming(trip) && ' впереди'}
                 </p>
             </div>
         ))}

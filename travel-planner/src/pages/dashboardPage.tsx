@@ -1,6 +1,7 @@
 import {CreateTripForm} from '@/features/createTrip/CreateTripForm';
 import {useTrips, useDeleteTrip} from '@/entitites/trip/queries';
 import {durationDays,isActive,isUpcoming} from '@/entitites/trip/model';
+import {Link} from 'react-router-dom';
 
 export const DashboardPage=()=>{
     const {data:trips, isLoading, error} = useTrips();
@@ -14,7 +15,9 @@ export const DashboardPage=()=>{
         {trips?.map((trip)=>(
             <div key={trip.id} className="card">
                 <div className="topbar">
-                    <h3>{trip.title}</h3>
+                    <Link to={`/trips/${trip.id}`}>
+                        <h3>{trip.title}</h3>
+                    </Link>
                     <button className='link' onClick={()=>{
                         if (confirm(`Удалить "${trip.title}"?`)) deleteTrip.mutate(trip.id);
                     }}>
